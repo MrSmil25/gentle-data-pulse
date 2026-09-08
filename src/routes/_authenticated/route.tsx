@@ -69,6 +69,10 @@ const navSections = [
     ] as const,
   },
   {
+    label: "EKSTERNAL",
+    items: [{ to: "/companies", label: "Perusahaan", icon: Building2 }] as const,
+  },
+  {
     label: "ORGANISASI",
     items: [
       { to: "/profile", label: "Profil Saya", icon: User },
@@ -78,6 +82,7 @@ const navSections = [
     ] as const,
   },
 ] as const;
+
 
 function AppLayout() {
   const { data: profile } = useMyProfile();
