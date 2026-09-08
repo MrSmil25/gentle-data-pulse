@@ -12,6 +12,7 @@ import { LEVEL_META, type Announcement } from "@/lib/announcements";
 export function AnnouncementCard({
   item,
   authorName,
+  fromSupervisor = false,
   scopeLabel,
   eventName,
   isRead,
@@ -25,6 +26,7 @@ export function AnnouncementCard({
 }: {
   item: Announcement;
   authorName: string;
+  fromSupervisor?: boolean;
   scopeLabel: string;
   eventName?: string | null;
   isRead: boolean;
@@ -50,6 +52,11 @@ export function AnnouncementCard({
             <span className="rounded-full border bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground">
               {scopeLabel}
             </span>
+            {fromSupervisor && (
+              <span className="rounded-full border border-amber-500/40 bg-amber-500/15 px-2.5 py-0.5 text-xs font-semibold text-amber-700 dark:text-amber-400">
+                ★ Dari Pembina
+              </span>
+            )}
             {eventName && (
               <span className="rounded-full border bg-muted px-2.5 py-0.5 text-xs font-medium">
                 🎯 {eventName}

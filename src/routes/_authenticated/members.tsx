@@ -193,7 +193,14 @@ function MembersPage() {
             <p className="text-sm text-muted-foreground">{editing?.full_name}</p>
             <div className="space-y-2">
               <Label>Role</Label>
-              <Select value={role} onValueChange={(v) => setRole(v as UserRole)}>
+              <Select
+                value={role}
+                onValueChange={(v) => {
+                  const next = v as UserRole;
+                  setRole(next);
+                  if (next === "Supervisor") setDivision("none");
+                }}
+              >
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
@@ -208,7 +215,11 @@ function MembersPage() {
             </div>
             <div className="space-y-2">
               <Label>Divisi</Label>
-              <Select value={division} onValueChange={setDivision}>
+              <Select
+                value={division}
+                onValueChange={setDivision}
+                disabled={role === "Supervisor"}
+              >
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
@@ -221,6 +232,11 @@ function MembersPage() {
                   ))}
                 </SelectContent>
               </Select>
+              {role === "Supervisor" && (
+                <p className="text-xs text-muted-foreground">
+                  Pembina tidak berdivisi — posisinya berada di atas seluruh divisi.
+                </p>
+              )}
             </div>
           </div>
           <DialogFooter>
