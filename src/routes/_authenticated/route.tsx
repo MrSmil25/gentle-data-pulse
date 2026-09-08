@@ -18,10 +18,13 @@ import {
   NotebookPen,
   CalendarDays,
   PiggyBank,
+  GraduationCap,
+  ClipboardList,
 } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { isBPH, useMyProfile } from "@/hooks/useProfile";
+import { isBPH, isSupervisor, useMyProfile } from "@/hooks/useProfile";
+import { usePendingAssignmentCount } from "@/hooks/useAssignments";
 import { canApproveFunds } from "@/lib/fund-requests";
 import { fetchOrgSettings, resolveLogoUrl } from "@/lib/announcements";
 import { UserAvatar } from "@/components/UserAvatar";
@@ -44,6 +47,7 @@ const navSections = [
       { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
       { to: "/workspace", label: "Ruang Kerja Saya", icon: BriefcaseBusiness },
       { to: "/calendar", label: "Kalender", icon: CalendarDays },
+      { to: "/mentor-tasks", label: "Tugas dari Pembina", icon: GraduationCap },
     ] as const,
   },
   {
@@ -88,6 +92,8 @@ function AppLayout() {
   });
   const canManageOrg = isBPH(profile?.role);
   const canApprove = canApproveFunds(profile?.role);
+  const supervisor = isSupervisor(profile?.role);
+  const pendingAssignments = usePendingAssignmentCount();
 
   async function handleLogout() {
     await queryClient.cancelQueries();
@@ -142,11 +148,36 @@ function AppLayout() {
                   }}
                 >
                   <item.icon className="size-4" />
-                  {item.label}
+                  <span className="flex-1">{item.label}</span>
+                  {item.to === "/mentor-tasks" && pendingAssignments > 0 && (
+                    <span className="rounded-full bg-destructive px-2 py-0.5 text-[11px] font-semibold text-destructive-foreground">
+                      {pendingAssignments}
+                    </span>
+                  )}
                 </Link>
               ))}
             </div>
           ))}
+
+          {supervisor && (
+            <div className="space-y-1">
+              <p className="px-3 pb-1 text-[11px] font-semibold tracking-wider text-sidebar-foreground/50">
+                PEMBINA
+              </p>
+              <Link
+                to="/mentor/assignments"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-sidebar-foreground/80 transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                activeProps={{
+                  className:
+                    "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium bg-sidebar-accent text-sidebar-accent-foreground",
+                }}
+              >
+                <ClipboardList className="size-4" />
+                Kelola Tugas
+              </Link>
+            </div>
+          )}
 
           {canApprove && (
             <div className="space-y-1">
