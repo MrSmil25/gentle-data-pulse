@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Users, Boxes, UserCheck, Building2, BriefcaseBusiness } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { Users, Boxes, UserCheck, Building2, BriefcaseBusiness, Handshake, Coins } from "lucide-react";
 import { useDivisions, useMyProfile, useProfiles, isSupervisor } from "@/hooks/useProfile";
+import { fetchDeals } from "@/lib/deals";
+import { formatRupiah } from "@/lib/format";
 import { SupervisorOverview } from "@/components/assignments/SupervisorOverview";
 import { UrgentBanners } from "@/components/announcements/UrgentBanners";
 
