@@ -25,6 +25,8 @@ import { Route as AuthenticatedMembersRouteImport } from './routes/_authenticate
 import { Route as AuthenticatedMentorTasksRouteImport } from './routes/_authenticated/mentor-tasks'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedWorkspaceRouteImport } from './routes/_authenticated/workspace'
+import { Route as AuthenticatedCompaniesIndexRouteImport } from './routes/_authenticated/companies.index'
+import { Route as AuthenticatedCompaniesIdRouteImport } from './routes/_authenticated/companies.$id'
 import { Route as AuthenticatedFundRequestsIndexRouteImport } from './routes/_authenticated/fund-requests.index'
 import { Route as AuthenticatedFundRequestsIdRouteImport } from './routes/_authenticated/fund-requests.$id'
 import { Route as AuthenticatedMeetingsIndexRouteImport } from './routes/_authenticated/meetings.index'
@@ -117,6 +119,18 @@ const AuthenticatedWorkspaceRoute = AuthenticatedWorkspaceRouteImport.update({
   path: '/workspace',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedCompaniesIndexRoute =
+  AuthenticatedCompaniesIndexRouteImport.update({
+    id: '/companies/',
+    path: '/companies/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedCompaniesIdRoute =
+  AuthenticatedCompaniesIdRouteImport.update({
+    id: '/companies/$id',
+    path: '/companies/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedFundRequestsIndexRoute =
   AuthenticatedFundRequestsIndexRouteImport.update({
     id: '/fund-requests/',
@@ -175,9 +189,11 @@ export interface FileRoutesByFullPath {
   '/mentor-tasks': typeof AuthenticatedMentorTasksRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/workspace': typeof AuthenticatedWorkspaceRoute
+  '/companies/$id': typeof AuthenticatedCompaniesIdRoute
   '/fund-requests/$id': typeof AuthenticatedFundRequestsIdRoute
   '/meetings/$id': typeof AuthenticatedMeetingsIdRoute
   '/settings/organization': typeof AuthenticatedSettingsOrganizationRoute
+  '/companies/': typeof AuthenticatedCompaniesIndexRoute
   '/fund-requests/': typeof AuthenticatedFundRequestsIndexRoute
   '/meetings/': typeof AuthenticatedMeetingsIndexRoute
   '/mentor/assignments/$id': typeof AuthenticatedMentorAssignmentsIdRoute
@@ -199,9 +215,11 @@ export interface FileRoutesByTo {
   '/mentor-tasks': typeof AuthenticatedMentorTasksRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/workspace': typeof AuthenticatedWorkspaceRoute
+  '/companies/$id': typeof AuthenticatedCompaniesIdRoute
   '/fund-requests/$id': typeof AuthenticatedFundRequestsIdRoute
   '/meetings/$id': typeof AuthenticatedMeetingsIdRoute
   '/settings/organization': typeof AuthenticatedSettingsOrganizationRoute
+  '/companies': typeof AuthenticatedCompaniesIndexRoute
   '/fund-requests': typeof AuthenticatedFundRequestsIndexRoute
   '/meetings': typeof AuthenticatedMeetingsIndexRoute
   '/mentor/assignments/$id': typeof AuthenticatedMentorAssignmentsIdRoute
@@ -225,9 +243,11 @@ export interface FileRoutesById {
   '/_authenticated/mentor-tasks': typeof AuthenticatedMentorTasksRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/workspace': typeof AuthenticatedWorkspaceRoute
+  '/_authenticated/companies/$id': typeof AuthenticatedCompaniesIdRoute
   '/_authenticated/fund-requests/$id': typeof AuthenticatedFundRequestsIdRoute
   '/_authenticated/meetings/$id': typeof AuthenticatedMeetingsIdRoute
   '/_authenticated/settings/organization': typeof AuthenticatedSettingsOrganizationRoute
+  '/_authenticated/companies/': typeof AuthenticatedCompaniesIndexRoute
   '/_authenticated/fund-requests/': typeof AuthenticatedFundRequestsIndexRoute
   '/_authenticated/meetings/': typeof AuthenticatedMeetingsIndexRoute
   '/_authenticated/mentor/assignments/$id': typeof AuthenticatedMentorAssignmentsIdRoute
@@ -251,9 +271,11 @@ export interface FileRouteTypes {
     | '/mentor-tasks'
     | '/profile'
     | '/workspace'
+    | '/companies/$id'
     | '/fund-requests/$id'
     | '/meetings/$id'
     | '/settings/organization'
+    | '/companies/'
     | '/fund-requests/'
     | '/meetings/'
     | '/mentor/assignments/$id'
@@ -275,9 +297,11 @@ export interface FileRouteTypes {
     | '/mentor-tasks'
     | '/profile'
     | '/workspace'
+    | '/companies/$id'
     | '/fund-requests/$id'
     | '/meetings/$id'
     | '/settings/organization'
+    | '/companies'
     | '/fund-requests'
     | '/meetings'
     | '/mentor/assignments/$id'
@@ -300,9 +324,11 @@ export interface FileRouteTypes {
     | '/_authenticated/mentor-tasks'
     | '/_authenticated/profile'
     | '/_authenticated/workspace'
+    | '/_authenticated/companies/$id'
     | '/_authenticated/fund-requests/$id'
     | '/_authenticated/meetings/$id'
     | '/_authenticated/settings/organization'
+    | '/_authenticated/companies/'
     | '/_authenticated/fund-requests/'
     | '/_authenticated/meetings/'
     | '/_authenticated/mentor/assignments/$id'
@@ -430,6 +456,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedWorkspaceRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/companies/': {
+      id: '/_authenticated/companies/'
+      path: '/companies'
+      fullPath: '/companies/'
+      preLoaderRoute: typeof AuthenticatedCompaniesIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/companies/$id': {
+      id: '/_authenticated/companies/$id'
+      path: '/companies/$id'
+      fullPath: '/companies/$id'
+      preLoaderRoute: typeof AuthenticatedCompaniesIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/fund-requests/': {
       id: '/_authenticated/fund-requests/'
       path: '/fund-requests'
@@ -495,9 +535,11 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedMentorTasksRoute: typeof AuthenticatedMentorTasksRoute
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedWorkspaceRoute: typeof AuthenticatedWorkspaceRoute
+  AuthenticatedCompaniesIdRoute: typeof AuthenticatedCompaniesIdRoute
   AuthenticatedFundRequestsIdRoute: typeof AuthenticatedFundRequestsIdRoute
   AuthenticatedMeetingsIdRoute: typeof AuthenticatedMeetingsIdRoute
   AuthenticatedSettingsOrganizationRoute: typeof AuthenticatedSettingsOrganizationRoute
+  AuthenticatedCompaniesIndexRoute: typeof AuthenticatedCompaniesIndexRoute
   AuthenticatedFundRequestsIndexRoute: typeof AuthenticatedFundRequestsIndexRoute
   AuthenticatedMeetingsIndexRoute: typeof AuthenticatedMeetingsIndexRoute
   AuthenticatedMentorAssignmentsIdRoute: typeof AuthenticatedMentorAssignmentsIdRoute
@@ -517,10 +559,12 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedMentorTasksRoute: AuthenticatedMentorTasksRoute,
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedWorkspaceRoute: AuthenticatedWorkspaceRoute,
+  AuthenticatedCompaniesIdRoute: AuthenticatedCompaniesIdRoute,
   AuthenticatedFundRequestsIdRoute: AuthenticatedFundRequestsIdRoute,
   AuthenticatedMeetingsIdRoute: AuthenticatedMeetingsIdRoute,
   AuthenticatedSettingsOrganizationRoute:
     AuthenticatedSettingsOrganizationRoute,
+  AuthenticatedCompaniesIndexRoute: AuthenticatedCompaniesIndexRoute,
   AuthenticatedFundRequestsIndexRoute: AuthenticatedFundRequestsIndexRoute,
   AuthenticatedMeetingsIndexRoute: AuthenticatedMeetingsIndexRoute,
   AuthenticatedMentorAssignmentsIdRoute: AuthenticatedMentorAssignmentsIdRoute,
