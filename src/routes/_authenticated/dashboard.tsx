@@ -1,18 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Users,
-  Boxes,
-  UserCheck,
-  Building2,
-  BriefcaseBusiness,
-  ClipboardList,
-  Radar,
-  ShieldCheck,
-} from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
-import { format } from "date-fns";
-import { id as idLocale } from "date-fns/locale";
-import { Progress } from "@/components/ui/progress";
+import { Users, Boxes, UserCheck, Building2, BriefcaseBusiness } from "lucide-react";
 import { useDivisions, useMyProfile, useProfiles, isSupervisor } from "@/hooks/useProfile";
 import { SupervisorOverview } from "@/components/assignments/SupervisorOverview";
 import { UrgentBanners } from "@/components/announcements/UrgentBanners";
