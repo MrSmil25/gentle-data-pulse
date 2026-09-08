@@ -48,8 +48,12 @@ export function useDivisions() {
   });
 }
 
-export const BPH_ROLES = ["Ketua", "Waketu"];
+export const BPH_ROLES = ["Ketua", "Waketu", "Supervisor"];
 
 export function isBPH(role?: string | null) {
   return !!role && BPH_ROLES.includes(role);
+}
+
+export function isSupervisor(role?: string | null) {
+  return role === "Supervisor";
 }
