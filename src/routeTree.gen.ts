@@ -10,33 +10,271 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as AuthenticatedAnnouncementsRouteImport } from './routes/_authenticated/announcements'
+import { Route as AuthenticatedBudgetsRouteImport } from './routes/_authenticated/budgets'
+import { Route as AuthenticatedCalendarRouteImport } from './routes/_authenticated/calendar'
+import { Route as AuthenticatedCommandCenterRouteImport } from './routes/_authenticated/command-center'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedDivisionsRouteImport } from './routes/_authenticated/divisions'
+import { Route as AuthenticatedFundApprovalsRouteImport } from './routes/_authenticated/fund-approvals'
+import { Route as AuthenticatedMemberProgressRouteImport } from './routes/_authenticated/member-progress'
+import { Route as AuthenticatedMembersRouteImport } from './routes/_authenticated/members'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as AuthenticatedWorkspaceRouteImport } from './routes/_authenticated/workspace'
+import { Route as AuthenticatedFundRequestsIndexRouteImport } from './routes/_authenticated/fund-requests.index'
+import { Route as AuthenticatedFundRequestsIdRouteImport } from './routes/_authenticated/fund-requests.$id'
+import { Route as AuthenticatedMeetingsIndexRouteImport } from './routes/_authenticated/meetings.index'
+import { Route as AuthenticatedMeetingsIdRouteImport } from './routes/_authenticated/meetings.$id'
+import { Route as AuthenticatedSettingsOrganizationRouteImport } from './routes/_authenticated/settings.organization'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAnnouncementsRoute =
+  AuthenticatedAnnouncementsRouteImport.update({
+    id: '/announcements',
+    path: '/announcements',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBudgetsRoute = AuthenticatedBudgetsRouteImport.update({
+  id: '/budgets',
+  path: '/budgets',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCalendarRoute = AuthenticatedCalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCommandCenterRoute =
+  AuthenticatedCommandCenterRouteImport.update({
+    id: '/command-center',
+    path: '/command-center',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDivisionsRoute = AuthenticatedDivisionsRouteImport.update({
+  id: '/divisions',
+  path: '/divisions',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedFundApprovalsRoute =
+  AuthenticatedFundApprovalsRouteImport.update({
+    id: '/fund-approvals',
+    path: '/fund-approvals',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedMemberProgressRoute =
+  AuthenticatedMemberProgressRouteImport.update({
+    id: '/member-progress',
+    path: '/member-progress',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedMembersRoute = AuthenticatedMembersRouteImport.update({
+  id: '/members',
+  path: '/members',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedWorkspaceRoute = AuthenticatedWorkspaceRouteImport.update({
+  id: '/workspace',
+  path: '/workspace',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedFundRequestsIndexRoute =
+  AuthenticatedFundRequestsIndexRouteImport.update({
+    id: '/fund-requests/',
+    path: '/fund-requests/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedFundRequestsIdRoute =
+  AuthenticatedFundRequestsIdRouteImport.update({
+    id: '/fund-requests/$id',
+    path: '/fund-requests/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedMeetingsIndexRoute =
+  AuthenticatedMeetingsIndexRouteImport.update({
+    id: '/meetings/',
+    path: '/meetings/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedMeetingsIdRoute = AuthenticatedMeetingsIdRouteImport.update({
+  id: '/meetings/$id',
+  path: '/meetings/$id',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedSettingsOrganizationRoute =
+  AuthenticatedSettingsOrganizationRouteImport.update({
+    id: '/settings/organization',
+    path: '/settings/organization',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/announcements': typeof AuthenticatedAnnouncementsRoute
+  '/budgets': typeof AuthenticatedBudgetsRoute
+  '/calendar': typeof AuthenticatedCalendarRoute
+  '/command-center': typeof AuthenticatedCommandCenterRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/divisions': typeof AuthenticatedDivisionsRoute
+  '/fund-approvals': typeof AuthenticatedFundApprovalsRoute
+  '/member-progress': typeof AuthenticatedMemberProgressRoute
+  '/members': typeof AuthenticatedMembersRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/workspace': typeof AuthenticatedWorkspaceRoute
+  '/fund-requests/$id': typeof AuthenticatedFundRequestsIdRoute
+  '/meetings/$id': typeof AuthenticatedMeetingsIdRoute
+  '/settings/organization': typeof AuthenticatedSettingsOrganizationRoute
+  '/fund-requests/': typeof AuthenticatedFundRequestsIndexRoute
+  '/meetings/': typeof AuthenticatedMeetingsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/announcements': typeof AuthenticatedAnnouncementsRoute
+  '/budgets': typeof AuthenticatedBudgetsRoute
+  '/calendar': typeof AuthenticatedCalendarRoute
+  '/command-center': typeof AuthenticatedCommandCenterRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/divisions': typeof AuthenticatedDivisionsRoute
+  '/fund-approvals': typeof AuthenticatedFundApprovalsRoute
+  '/member-progress': typeof AuthenticatedMemberProgressRoute
+  '/members': typeof AuthenticatedMembersRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/workspace': typeof AuthenticatedWorkspaceRoute
+  '/fund-requests/$id': typeof AuthenticatedFundRequestsIdRoute
+  '/meetings/$id': typeof AuthenticatedMeetingsIdRoute
+  '/settings/organization': typeof AuthenticatedSettingsOrganizationRoute
+  '/fund-requests': typeof AuthenticatedFundRequestsIndexRoute
+  '/meetings': typeof AuthenticatedMeetingsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/_authenticated/announcements': typeof AuthenticatedAnnouncementsRoute
+  '/_authenticated/budgets': typeof AuthenticatedBudgetsRoute
+  '/_authenticated/calendar': typeof AuthenticatedCalendarRoute
+  '/_authenticated/command-center': typeof AuthenticatedCommandCenterRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/divisions': typeof AuthenticatedDivisionsRoute
+  '/_authenticated/fund-approvals': typeof AuthenticatedFundApprovalsRoute
+  '/_authenticated/member-progress': typeof AuthenticatedMemberProgressRoute
+  '/_authenticated/members': typeof AuthenticatedMembersRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/_authenticated/workspace': typeof AuthenticatedWorkspaceRoute
+  '/_authenticated/fund-requests/$id': typeof AuthenticatedFundRequestsIdRoute
+  '/_authenticated/meetings/$id': typeof AuthenticatedMeetingsIdRoute
+  '/_authenticated/settings/organization': typeof AuthenticatedSettingsOrganizationRoute
+  '/_authenticated/fund-requests/': typeof AuthenticatedFundRequestsIndexRoute
+  '/_authenticated/meetings/': typeof AuthenticatedMeetingsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/register'
+    | '/announcements'
+    | '/budgets'
+    | '/calendar'
+    | '/command-center'
+    | '/dashboard'
+    | '/divisions'
+    | '/fund-approvals'
+    | '/member-progress'
+    | '/members'
+    | '/profile'
+    | '/workspace'
+    | '/fund-requests/$id'
+    | '/meetings/$id'
+    | '/settings/organization'
+    | '/fund-requests/'
+    | '/meetings/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/register'
+    | '/announcements'
+    | '/budgets'
+    | '/calendar'
+    | '/command-center'
+    | '/dashboard'
+    | '/divisions'
+    | '/fund-approvals'
+    | '/member-progress'
+    | '/members'
+    | '/profile'
+    | '/workspace'
+    | '/fund-requests/$id'
+    | '/meetings/$id'
+    | '/settings/organization'
+    | '/fund-requests'
+    | '/meetings'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/login'
+    | '/register'
+    | '/_authenticated/announcements'
+    | '/_authenticated/budgets'
+    | '/_authenticated/calendar'
+    | '/_authenticated/command-center'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/divisions'
+    | '/_authenticated/fund-approvals'
+    | '/_authenticated/member-progress'
+    | '/_authenticated/members'
+    | '/_authenticated/profile'
+    | '/_authenticated/workspace'
+    | '/_authenticated/fund-requests/$id'
+    | '/_authenticated/meetings/$id'
+    | '/_authenticated/settings/organization'
+    | '/_authenticated/fund-requests/'
+    | '/_authenticated/meetings/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  RegisterRoute: typeof RegisterRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +286,189 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/announcements': {
+      id: '/_authenticated/announcements'
+      path: '/announcements'
+      fullPath: '/announcements'
+      preLoaderRoute: typeof AuthenticatedAnnouncementsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/budgets': {
+      id: '/_authenticated/budgets'
+      path: '/budgets'
+      fullPath: '/budgets'
+      preLoaderRoute: typeof AuthenticatedBudgetsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/calendar': {
+      id: '/_authenticated/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof AuthenticatedCalendarRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/command-center': {
+      id: '/_authenticated/command-center'
+      path: '/command-center'
+      fullPath: '/command-center'
+      preLoaderRoute: typeof AuthenticatedCommandCenterRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/divisions': {
+      id: '/_authenticated/divisions'
+      path: '/divisions'
+      fullPath: '/divisions'
+      preLoaderRoute: typeof AuthenticatedDivisionsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/fund-approvals': {
+      id: '/_authenticated/fund-approvals'
+      path: '/fund-approvals'
+      fullPath: '/fund-approvals'
+      preLoaderRoute: typeof AuthenticatedFundApprovalsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/member-progress': {
+      id: '/_authenticated/member-progress'
+      path: '/member-progress'
+      fullPath: '/member-progress'
+      preLoaderRoute: typeof AuthenticatedMemberProgressRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/members': {
+      id: '/_authenticated/members'
+      path: '/members'
+      fullPath: '/members'
+      preLoaderRoute: typeof AuthenticatedMembersRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/workspace': {
+      id: '/_authenticated/workspace'
+      path: '/workspace'
+      fullPath: '/workspace'
+      preLoaderRoute: typeof AuthenticatedWorkspaceRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/fund-requests/': {
+      id: '/_authenticated/fund-requests/'
+      path: '/fund-requests'
+      fullPath: '/fund-requests/'
+      preLoaderRoute: typeof AuthenticatedFundRequestsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/fund-requests/$id': {
+      id: '/_authenticated/fund-requests/$id'
+      path: '/fund-requests/$id'
+      fullPath: '/fund-requests/$id'
+      preLoaderRoute: typeof AuthenticatedFundRequestsIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/meetings/': {
+      id: '/_authenticated/meetings/'
+      path: '/meetings'
+      fullPath: '/meetings/'
+      preLoaderRoute: typeof AuthenticatedMeetingsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/meetings/$id': {
+      id: '/_authenticated/meetings/$id'
+      path: '/meetings/$id'
+      fullPath: '/meetings/$id'
+      preLoaderRoute: typeof AuthenticatedMeetingsIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/settings/organization': {
+      id: '/_authenticated/settings/organization'
+      path: '/settings/organization'
+      fullPath: '/settings/organization'
+      preLoaderRoute: typeof AuthenticatedSettingsOrganizationRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAnnouncementsRoute: typeof AuthenticatedAnnouncementsRoute
+  AuthenticatedBudgetsRoute: typeof AuthenticatedBudgetsRoute
+  AuthenticatedCalendarRoute: typeof AuthenticatedCalendarRoute
+  AuthenticatedCommandCenterRoute: typeof AuthenticatedCommandCenterRoute
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedDivisionsRoute: typeof AuthenticatedDivisionsRoute
+  AuthenticatedFundApprovalsRoute: typeof AuthenticatedFundApprovalsRoute
+  AuthenticatedMemberProgressRoute: typeof AuthenticatedMemberProgressRoute
+  AuthenticatedMembersRoute: typeof AuthenticatedMembersRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedWorkspaceRoute: typeof AuthenticatedWorkspaceRoute
+  AuthenticatedFundRequestsIdRoute: typeof AuthenticatedFundRequestsIdRoute
+  AuthenticatedMeetingsIdRoute: typeof AuthenticatedMeetingsIdRoute
+  AuthenticatedSettingsOrganizationRoute: typeof AuthenticatedSettingsOrganizationRoute
+  AuthenticatedFundRequestsIndexRoute: typeof AuthenticatedFundRequestsIndexRoute
+  AuthenticatedMeetingsIndexRoute: typeof AuthenticatedMeetingsIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAnnouncementsRoute: AuthenticatedAnnouncementsRoute,
+  AuthenticatedBudgetsRoute: AuthenticatedBudgetsRoute,
+  AuthenticatedCalendarRoute: AuthenticatedCalendarRoute,
+  AuthenticatedCommandCenterRoute: AuthenticatedCommandCenterRoute,
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedDivisionsRoute: AuthenticatedDivisionsRoute,
+  AuthenticatedFundApprovalsRoute: AuthenticatedFundApprovalsRoute,
+  AuthenticatedMemberProgressRoute: AuthenticatedMemberProgressRoute,
+  AuthenticatedMembersRoute: AuthenticatedMembersRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedWorkspaceRoute: AuthenticatedWorkspaceRoute,
+  AuthenticatedFundRequestsIdRoute: AuthenticatedFundRequestsIdRoute,
+  AuthenticatedMeetingsIdRoute: AuthenticatedMeetingsIdRoute,
+  AuthenticatedSettingsOrganizationRoute:
+    AuthenticatedSettingsOrganizationRoute,
+  AuthenticatedFundRequestsIndexRoute: AuthenticatedFundRequestsIndexRoute,
+  AuthenticatedMeetingsIndexRoute: AuthenticatedMeetingsIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  LoginRoute: LoginRoute,
+  RegisterRoute: RegisterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
