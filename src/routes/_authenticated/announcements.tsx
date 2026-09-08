@@ -163,6 +163,9 @@ function AnnouncementsPage() {
                 authorName={
                   profiles.find((p) => p.id === item.author_id)?.full_name ?? "Pengurus"
                 }
+                fromSupervisor={
+                  profiles.find((p) => p.id === item.author_id)?.role === "Supervisor"
+                }
                 scopeLabel={
                   item.scope === "Organisasi"
                     ? "Organisasi"

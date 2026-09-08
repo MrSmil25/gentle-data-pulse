@@ -42,11 +42,11 @@ export const ATTENDANCE_CLASS: Record<string, string> = {
 };
 
 export function canManageMeetings(role?: string | null) {
-  return !!role && ["Ketua", "Waketu", "Sekretaris", "Kadiv"].includes(role);
+  return !!role && ["Ketua", "Waketu", "Sekretaris", "Kadiv", "Supervisor"].includes(role);
 }
 
 export function canRecapAttendance(role?: string | null) {
-  return !!role && ["Ketua", "Waketu", "Sekretaris", "Kadiv"].includes(role);
+  return !!role && ["Ketua", "Waketu", "Sekretaris", "Kadiv", "Supervisor"].includes(role);
 }
 
 /** Boleh mengelola isi rapat tertentu (notulensi, keputusan, presensi). */
@@ -57,7 +57,7 @@ export function canEditMeeting(
 ) {
   if (!meeting) return false;
   if (userId && (meeting.recorded_by === userId || meeting.led_by === userId)) return true;
-  return !!role && ["Ketua", "Waketu", "Sekretaris"].includes(role);
+  return !!role && ["Ketua", "Waketu", "Sekretaris", "Supervisor"].includes(role);
 }
 
 export function formatMeetingDateTime(value: string | null | undefined): string {

@@ -108,7 +108,7 @@ function FundApprovalsPage() {
     return (
       <Card>
         <CardContent className="py-10 text-center text-sm text-muted-foreground">
-          Halaman ini hanya untuk Controller, Ketua, dan Waketu.
+          Halaman ini hanya untuk Controller, Ketua, Waketu, dan Pembina.
         </CardContent>
       </Card>
     );

@@ -109,7 +109,7 @@ export function supabaseErrorMessage(error: unknown): string {
 }
 
 export function canManageParentBudget(role?: string | null): boolean {
-  return !!role && ["Ketua", "Waketu", "Controller"].includes(role);
+  return !!role && ["Ketua", "Waketu", "Controller", "Supervisor"].includes(role);
 }
 
 export function canManageSubBudget(

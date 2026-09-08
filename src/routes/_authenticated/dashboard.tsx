@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Users, Boxes, UserCheck, Building2, BriefcaseBusiness } from "lucide-react";
-import { useDivisions, useMyProfile, useProfiles } from "@/hooks/useProfile";
+import { useDivisions, useMyProfile, useProfiles, isSupervisor } from "@/hooks/useProfile";
+import { SupervisorOverview } from "@/components/assignments/SupervisorOverview";
 import { UrgentBanners } from "@/components/announcements/UrgentBanners";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
@@ -49,6 +50,8 @@ function DashboardPage() {
   return (
     <div className="mx-auto max-w-6xl space-y-6">
       <UrgentBanners />
+
+      {isSupervisor(profile?.role) && <SupervisorOverview />}
 
       <section className="rounded-2xl bg-primary p-6 text-primary-foreground shadow-sm sm:p-8">
         <h1 className="text-2xl font-bold sm:text-3xl">
