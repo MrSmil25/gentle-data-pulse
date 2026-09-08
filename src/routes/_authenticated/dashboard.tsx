@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Users, Boxes, UserCheck, Building2, BriefcaseBusiness } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { Users, Boxes, UserCheck, Building2, BriefcaseBusiness, Handshake, Coins } from "lucide-react";
 import { useDivisions, useMyProfile, useProfiles, isSupervisor } from "@/hooks/useProfile";
+import { fetchDeals } from "@/lib/deals";
+import { formatRupiah } from "@/lib/format";
 import { SupervisorOverview } from "@/components/assignments/SupervisorOverview";
 import { UrgentBanners } from "@/components/announcements/UrgentBanners";
 
@@ -43,6 +46,15 @@ function DashboardPage() {
   const { data: profiles = [], isLoading } = useProfiles();
   const { data: divisions = [] } = useDivisions();
 
+  const { data: deals = [] } = useQuery({ queryKey: ["deals"], queryFn: fetchDeals });
+
+  const activeDeals = deals.filter(
+    (d) => d.stage !== "Deal" && d.stage !== "Rejected" && d.stage !== "Ghosted",
+  ).length;
+  const pipelineValue = deals
+    .filter((d) => ["Prospect", "Contacted", "Pitched", "Negotiating"].includes(d.stage))
+    .reduce((s, d) => s + Number(d.value_idr ?? 0), 0);
+
   const totalAnggota = profiles.length;
   const anggotaAktif = profiles.filter((p) => p.status === "Active").length;
   const myDivision = divisions.find((d) => d.code === profile?.division);
@@ -78,6 +90,8 @@ function DashboardPage() {
           value={myDivision?.code ?? "-"}
           icon={Building2}
         />
+        <StatCard label="Deal Aktif" value={activeDeals} icon={Handshake} />
+        <StatCard label="Total Pipeline Value" value={formatRupiah(pipelineValue)} icon={Coins} />
       </section>
 
       {myDivision && (

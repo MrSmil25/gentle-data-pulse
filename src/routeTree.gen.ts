@@ -23,6 +23,7 @@ import { Route as AuthenticatedFundApprovalsRouteImport } from './routes/_authen
 import { Route as AuthenticatedMemberProgressRouteImport } from './routes/_authenticated/member-progress'
 import { Route as AuthenticatedMembersRouteImport } from './routes/_authenticated/members'
 import { Route as AuthenticatedMentorTasksRouteImport } from './routes/_authenticated/mentor-tasks'
+import { Route as AuthenticatedPipelineRouteImport } from './routes/_authenticated/pipeline'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedWorkspaceRouteImport } from './routes/_authenticated/workspace'
 import { Route as AuthenticatedCompaniesIndexRouteImport } from './routes/_authenticated/companies.index'
@@ -109,6 +110,11 @@ const AuthenticatedMentorTasksRoute =
     path: '/mentor-tasks',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedPipelineRoute = AuthenticatedPipelineRouteImport.update({
+  id: '/pipeline',
+  path: '/pipeline',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -187,6 +193,7 @@ export interface FileRoutesByFullPath {
   '/member-progress': typeof AuthenticatedMemberProgressRoute
   '/members': typeof AuthenticatedMembersRoute
   '/mentor-tasks': typeof AuthenticatedMentorTasksRoute
+  '/pipeline': typeof AuthenticatedPipelineRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/workspace': typeof AuthenticatedWorkspaceRoute
   '/companies/$id': typeof AuthenticatedCompaniesIdRoute
@@ -213,6 +220,7 @@ export interface FileRoutesByTo {
   '/member-progress': typeof AuthenticatedMemberProgressRoute
   '/members': typeof AuthenticatedMembersRoute
   '/mentor-tasks': typeof AuthenticatedMentorTasksRoute
+  '/pipeline': typeof AuthenticatedPipelineRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/workspace': typeof AuthenticatedWorkspaceRoute
   '/companies/$id': typeof AuthenticatedCompaniesIdRoute
@@ -241,6 +249,7 @@ export interface FileRoutesById {
   '/_authenticated/member-progress': typeof AuthenticatedMemberProgressRoute
   '/_authenticated/members': typeof AuthenticatedMembersRoute
   '/_authenticated/mentor-tasks': typeof AuthenticatedMentorTasksRoute
+  '/_authenticated/pipeline': typeof AuthenticatedPipelineRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/workspace': typeof AuthenticatedWorkspaceRoute
   '/_authenticated/companies/$id': typeof AuthenticatedCompaniesIdRoute
@@ -269,6 +278,7 @@ export interface FileRouteTypes {
     | '/member-progress'
     | '/members'
     | '/mentor-tasks'
+    | '/pipeline'
     | '/profile'
     | '/workspace'
     | '/companies/$id'
@@ -295,6 +305,7 @@ export interface FileRouteTypes {
     | '/member-progress'
     | '/members'
     | '/mentor-tasks'
+    | '/pipeline'
     | '/profile'
     | '/workspace'
     | '/companies/$id'
@@ -322,6 +333,7 @@ export interface FileRouteTypes {
     | '/_authenticated/member-progress'
     | '/_authenticated/members'
     | '/_authenticated/mentor-tasks'
+    | '/_authenticated/pipeline'
     | '/_authenticated/profile'
     | '/_authenticated/workspace'
     | '/_authenticated/companies/$id'
@@ -442,6 +454,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedMentorTasksRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/pipeline': {
+      id: '/_authenticated/pipeline'
+      path: '/pipeline'
+      fullPath: '/pipeline'
+      preLoaderRoute: typeof AuthenticatedPipelineRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/profile': {
       id: '/_authenticated/profile'
       path: '/profile'
@@ -533,6 +552,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedMemberProgressRoute: typeof AuthenticatedMemberProgressRoute
   AuthenticatedMembersRoute: typeof AuthenticatedMembersRoute
   AuthenticatedMentorTasksRoute: typeof AuthenticatedMentorTasksRoute
+  AuthenticatedPipelineRoute: typeof AuthenticatedPipelineRoute
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedWorkspaceRoute: typeof AuthenticatedWorkspaceRoute
   AuthenticatedCompaniesIdRoute: typeof AuthenticatedCompaniesIdRoute
@@ -557,6 +577,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedMemberProgressRoute: AuthenticatedMemberProgressRoute,
   AuthenticatedMembersRoute: AuthenticatedMembersRoute,
   AuthenticatedMentorTasksRoute: AuthenticatedMentorTasksRoute,
+  AuthenticatedPipelineRoute: AuthenticatedPipelineRoute,
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedWorkspaceRoute: AuthenticatedWorkspaceRoute,
   AuthenticatedCompaniesIdRoute: AuthenticatedCompaniesIdRoute,

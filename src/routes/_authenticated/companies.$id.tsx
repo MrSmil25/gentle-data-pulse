@@ -17,6 +17,7 @@ import {
 } from "@/lib/companies";
 import { CompanyFormDialog } from "@/components/companies/CompanyFormDialog";
 import { ContactFormDialog } from "@/components/companies/ContactFormDialog";
+import { CompanyDealsTab } from "@/components/deals/CompanyDealsTab";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -187,9 +188,7 @@ function CompanyDetailPage() {
         </TabsContent>
 
         <TabsContent value="deal">
-          <div className="rounded-2xl border bg-card p-10 text-center text-sm text-muted-foreground shadow-sm">
-            Segera hadir
-          </div>
+          <CompanyDealsTab companyId={id} />
         </TabsContent>
         <TabsContent value="mou">
           <div className="rounded-2xl border bg-card p-10 text-center text-sm text-muted-foreground shadow-sm">
