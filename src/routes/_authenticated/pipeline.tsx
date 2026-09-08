@@ -97,7 +97,7 @@ function Column({
 }) {
   const { setNodeRef, isOver } = useDroppable({ id: stage });
   const total = deals.reduce((s, d) => s + Number(d.value_idr ?? 0), 0);
-  const meta = STAGE_META[stage];
+  const meta = STAGE_META[stage]!;
   return (
     <div className="flex w-72 shrink-0 flex-col">
       <div className={`rounded-t-xl px-3 py-2 ${meta.header}`}>

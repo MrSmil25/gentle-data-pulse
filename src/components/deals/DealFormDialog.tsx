@@ -150,7 +150,7 @@ export function DealFormDialog({
                 <SelectTrigger><SelectValue /></SelectTrigger>
                 <SelectContent>
                   {DEAL_STAGES.map((s) => (
-                    <SelectItem key={s} value={s}>{STAGE_META[s].label}</SelectItem>
+                    <SelectItem key={s} value={s}>{STAGE_META[s]?.label ?? s}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
