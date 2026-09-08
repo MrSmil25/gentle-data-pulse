@@ -27,7 +27,15 @@ import type { Database } from "@/integrations/supabase/types";
 
 type UserRole = Database["public"]["Enums"]["user_role"];
 
-const ROLES: UserRole[] = ["Anggota", "Kadiv", "Waketu", "Ketua", "Sekretaris", "Controller"];
+const ROLES: UserRole[] = [
+  "Anggota",
+  "Kadiv",
+  "Waketu",
+  "Ketua",
+  "Sekretaris",
+  "Controller",
+  "Supervisor",
+];
 
 export const Route = createFileRoute("/_authenticated/members")({
   head: () => ({

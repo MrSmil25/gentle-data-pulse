@@ -282,7 +282,9 @@ export function agingClass(days: number | null | undefined) {
 }
 
 export function canApproveFunds(role?: string | null) {
-  return role === "Controller" || role === "Ketua" || role === "Waketu";
+  return (
+    role === "Controller" || role === "Ketua" || role === "Waketu" || role === "Supervisor"
+  );
 }
 
 export const REIMBURSEMENT_STEPS = ["Submitted", "Approved", "Disbursed"] as const;

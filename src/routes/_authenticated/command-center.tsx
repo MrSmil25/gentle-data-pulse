@@ -74,7 +74,12 @@ function CommandCenterPage() {
   const [period, setPeriod] = useState<string | null>(null);
 
   const role = profile?.role ?? "Anggota";
-  const isOrgWide = role === "Ketua" || role === "Waketu" || role === "Sekretaris" || role === "Controller";
+  const isOrgWide =
+    role === "Ketua" ||
+    role === "Waketu" ||
+    role === "Sekretaris" ||
+    role === "Controller" ||
+    role === "Supervisor";
   const isMemberOnly = role === "Anggota";
   const myDivision = profile?.division ?? null;
 

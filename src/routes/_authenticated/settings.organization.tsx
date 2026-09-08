@@ -33,7 +33,7 @@ export const Route = createFileRoute("/_authenticated/settings/organization")({
       .select("role")
       .eq("id", data.user.id)
       .maybeSingle();
-    if (!profile || !["Ketua", "Waketu"].includes(profile.role)) {
+    if (!profile || !["Ketua", "Waketu", "Supervisor"].includes(profile.role)) {
       throw redirect({ to: "/dashboard" });
     }
   },
