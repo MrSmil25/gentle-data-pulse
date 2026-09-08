@@ -21,6 +21,8 @@ import {
   GraduationCap,
   ClipboardList,
   Building2,
+  KanbanSquare,
+
 
 } from "lucide-react";
 import { useState } from "react";
@@ -72,7 +74,10 @@ const navSections = [
   },
   {
     label: "EKSTERNAL",
-    items: [{ to: "/companies", label: "Perusahaan", icon: Building2 }] as const,
+    items: [
+      { to: "/companies", label: "Perusahaan", icon: Building2 },
+      { to: "/pipeline", label: "Pipeline", icon: KanbanSquare },
+    ] as const,
   },
   {
     label: "ORGANISASI",
